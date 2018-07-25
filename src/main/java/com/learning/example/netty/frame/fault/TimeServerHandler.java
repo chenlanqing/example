@@ -1,4 +1,4 @@
-package com.learning.example.netty.codec.fault;
+package com.learning.example.netty.frame.fault;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

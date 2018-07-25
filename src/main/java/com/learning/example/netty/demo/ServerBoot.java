@@ -1,10 +1,7 @@
 package com.learning.example.netty.demo;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -29,7 +26,8 @@ public class ServerBoot {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-//                            ch.pipeline().addLast(null);
+                            ch.pipeline().addLast(new ChannelInboundHandlerAdapter());
+                            ch.pipeline().addLast(new ChannelOutboundHandlerAdapter());
                         }
                     });
             ChannelFuture f = b.bind(8888).sync();
