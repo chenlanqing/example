@@ -2,10 +2,10 @@ package com.learning.example.netty.protocol.http.fileServer;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.*;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.stream.ChunkedFile;
 import io.netty.util.CharsetUtil;
+import io.netty.channel.*;
 
 import javax.activation.MimetypesFileTypeMap;
 import java.io.File;
@@ -22,11 +22,7 @@ import static io.netty.handler.codec.http.HttpMethod.GET;
 import static io.netty.handler.codec.http.HttpResponseStatus.*;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
-/**
- * @author lilinfeng
- * @version 1.0
- * @date 2014年2月14日
- */
+
 public class HttpFileServerHandler extends
         SimpleChannelInboundHandler<FullHttpRequest> {
     private final String url;
@@ -35,6 +31,7 @@ public class HttpFileServerHandler extends
         this.url = url;
     }
 
+    @Override
     public void messageReceived(ChannelHandlerContext ctx,
                                 FullHttpRequest request) throws Exception {
         if (!request.getDecoderResult().isSuccess()) {
@@ -207,8 +204,5 @@ public class HttpFileServerHandler extends
                 mimeTypesMap.getContentType(file.getPath()));
     }
 
-    @Override
-    protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest msg) throws Exception {
 
-    }
 }

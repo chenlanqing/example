@@ -14,14 +14,14 @@ public class DelimiterEchoClientHandler extends SimpleChannelInboundHandler {
     static final String ECHO_REQ = "Hi, BlueFish. Welcome to Netty.$_";
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-
-    }
-
-    @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("This is " + ++counter + " times receive server : ["
                 + msg + "]");
+    }
+
+    @Override
+    protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
+
     }
 
     @Override

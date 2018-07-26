@@ -44,9 +44,8 @@ public class HttpFileServer {
                             .addLast("fileServerHandler", new HttpFileServerHandler(url));
                         }
                     });
-//            ChannelFuture f = b.bind("192.168.1.102", port).sync();
-            ChannelFuture f = b.bind("127.0.0.1", port).sync();
-            log.info("Http文件目录服务器启动，网址是：http://127.0.0.1:{}{}", port, url);
+            ChannelFuture f = b.bind("192.168.31.196", port).sync();
+            log.info("Http文件目录服务器启动，网址是：http://192.168.31.196:{}{}", port, url);
             f.channel().closeFuture().sync();
         } finally {
             boss.shutdownGracefully();

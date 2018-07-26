@@ -8,14 +8,16 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * @version 1.0.0
  */
 public class FixedEchoServerHandler extends SimpleChannelInboundHandler {
-    @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
 
-    }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("Receive client : [" + msg + "]");
+    }
+
+    @Override
+    protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
+
     }
 
     @Override
