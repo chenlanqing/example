@@ -35,12 +35,17 @@ public class HttpFileServer {
             b.group(boss,worker)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
+                        /**
+                         * HttpObjectAggregator：将多个消息转换为单一的FullHttpRequest或者FullHttpResponse
+                         * @param ch
+                         * @throws Exception
+                         */
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast("http-decoder", new HttpRequestDecoder())
                             .addLast("http-aggregator", new HttpObjectAggregator(65536))
-                            .addLast("http-encoder", new HttpResponseEncoder())
-                            .addLast("http-chunked",new ChunkedWriteHandler())
+                            .addLast("http-encoder", new HttpResponseEncoder()) // 响应编码器
+                            .addLast("http-chunked",new ChunkedWriteHandler()) // 支持异步发送大的码流，但不占用过多的内存，防止Java发生Java内存溢出
                             .addLast("fileServerHandler", new HttpFileServerHandler(url));
                         }
                     });
