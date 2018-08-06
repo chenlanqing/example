@@ -1,4 +1,4 @@
-package com.learning.example.thread;
+package com.learning.example.thread.base;
 
 public class DeadLock{
 	public static void main(String[] args) {
