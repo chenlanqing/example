@@ -8,3 +8,5 @@
 *.ipr
 
 .hprof
+
+*.log
