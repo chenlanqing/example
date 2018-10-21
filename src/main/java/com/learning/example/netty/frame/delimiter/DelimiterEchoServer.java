@@ -39,7 +39,7 @@ public class DelimiterEchoServer {
                             // 如果没有加DelimiterBasedFrameDecoder解码器，结果是另外一回事
                             ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, delimiter));
                             ch.pipeline().addLast(new StringDecoder());
-                            ch.pipeline().addLast(new DelimiterEchoServerHandler());
+//                            ch.pipeline().addLast(new DelimiterEchoServerHandler());
                         }
                     });
             ChannelFuture f = b.bind(port).sync();

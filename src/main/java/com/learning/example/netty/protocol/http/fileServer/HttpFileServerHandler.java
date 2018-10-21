@@ -23,8 +23,7 @@ import static io.netty.handler.codec.http.HttpResponseStatus.*;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 
-public class HttpFileServerHandler extends
-        SimpleChannelInboundHandler<FullHttpRequest> {
+public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
     private final String url;
 
     public HttpFileServerHandler(String url) {
@@ -32,7 +31,7 @@ public class HttpFileServerHandler extends
     }
 
     @Override
-    public void messageReceived(ChannelHandlerContext ctx,
+    public void channelRead0(ChannelHandlerContext ctx,
                                 FullHttpRequest request) throws Exception {
         if (!request.getDecoderResult().isSuccess()) {
             sendError(ctx, BAD_REQUEST);

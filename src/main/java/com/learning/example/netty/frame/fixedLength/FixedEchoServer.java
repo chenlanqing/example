@@ -38,7 +38,7 @@ public class FixedEchoServer {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast(new FixedLengthFrameDecoder(20));
                             ch.pipeline().addLast(new StringDecoder());
-                            ch.pipeline().addLast(new FixedEchoServerHandler());
+//                            ch.pipeline().addLast(new FixedEchoServerHandler());
                         }
                     });
 

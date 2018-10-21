@@ -34,18 +34,18 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 
     private WebSocketServerHandshaker handshaker;
 
-    @Override
-    public void messageReceived(ChannelHandlerContext ctx, Object msg)
-            throws Exception {
-        // 传统的HTTP接入
-        if (msg instanceof FullHttpRequest) {
-            handleHttpRequest(ctx, (FullHttpRequest) msg);
-        }
-        // WebSocket接入
-        else if (msg instanceof WebSocketFrame) {
-            handleWebSocketFrame(ctx, (WebSocketFrame) msg);
-        }
-    }
+//    @Override
+//    public void messageReceived(ChannelHandlerContext ctx, Object msg)
+//            throws Exception {
+//        // 传统的HTTP接入
+//        if (msg instanceof FullHttpRequest) {
+//            handleHttpRequest(ctx, (FullHttpRequest) msg);
+//        }
+//        // WebSocket接入
+//        else if (msg instanceof WebSocketFrame) {
+//            handleWebSocketFrame(ctx, (WebSocketFrame) msg);
+//        }
+//    }
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
@@ -130,5 +130,10 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
             throws Exception {
         cause.printStackTrace();
         ctx.close();
+    }
+
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+
     }
 }
